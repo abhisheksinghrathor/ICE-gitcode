@@ -1,52 +1,91 @@
-# Simple Node with Express Server with REST API
+Steps to Run the test
 
-[![Build Status](https://travis-ci.org/rwieruch/node-express-server-rest-api.svg?branch=master)](https://travis-ci.org/rwieruch/node-express-server-rest-api) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/rwieruch/node-express-server-rest-api.svg)](https://greenkeeper.io/)
+1: Download & install node on your system (if you already have node installed on your system skip this step )
 
-An easy way to get started with a Express server offering a REST API with Node.js. [Read more about it.](https://www.robinwieruch.de/node-express-server-rest-api)
+Software Download link: https://nodejs.org/en/download/
 
-## Features
+Steps to install: https://phoenixnap.com/kb/install-node-js-npm-on-windows
 
-- Express
-- REST API
+2: Go to github link to download the code
 
-## Requirements
+Github Link: https://github.com/abhisheksinghrathor/ICE-gitcode
 
-- [node & npm](https://nodejs.org/en/)
-- [git](https://www.robinwieruch.de/git-essential-commands/)
+3: open command prompt on your desktop and go to the path where you have downloaded the code
 
-## Installation
+open the folder and go to the tsvnodeJs folder
 
-- `git clone git@github.com:rwieruch/node-express-server-rest-api.git`
-- `cd node-express-server-rest-api`
-- `npm install`
-- `npm start`
-- optional: include _.env_ in your _.gitignore_
+So go to this path in command promt
 
-### GET Routes
+4: run node command “npm install” to install the package require
 
-- visit http://localhost:3000
-  - /messages
-  - /messages/1
-  - /users
-  - /users/1
+5: Now when all the packages are install run “npm start” to run code on server
 
-### Beyond GET Routes
+Now the code ill run on web server
 
-#### CURL
+“ http://localhost:3005/ “
 
-- Create a message with:
-  - `curl -X POST -H "Content-Type:application/json" http://localhost:3000/messages -d '{"text":"Hi again, World"}'`
-- Delete a message with:
-  - `curl -X DELETE -H "Content-Type:application/json" http://localhost:3000/messages/1`
+GET: http://localhost:3005/submitData
+POST: http://localhost:3005/submitData
 
-#### Postman
+About the Code :
 
-- Install [Postman](https://www.getpostman.com/apps) to interact with REST API
-- Create a message with:
-  - URL: http://localhost:3000/messages
-  - Method: POST
-  - Body: raw + JSON (application/json)
-  - Body Content: `{ "text": "Hi again, World" }`
-- Delete a message with:
-  - URL: http://localhost:3000/messages/1
-  - Method: DELETE
+GET REQUEST
+
+Example
+type: GET
+Url: http://localhost:3005/submitData
+Input: none
+Output: 
+{
+    "Claire Gute": {
+        "orders": [
+            {
+                "order_id": "CA-2016-152156",
+                "order_date": "2016-11-08T00:00:00.000Z",
+                "line_items": [
+                    {
+                        "product_url": "https://www.foo.com/Furniture/Bookcases/FUR-BO-10001798",
+                        "revenue": 261.96
+                    },
+                    {
+                        "product_url": "https://www.foo.com/Furniture/Chairs/FUR-CH-10000454",
+                        "revenue": 731.94
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+POST REQUEST
+
+Example
+type: POST
+Url: http://localhost:3005/submitData
+Input: TSV data
+
+Row ID	Order ID	Order Date	Ship Date	Ship Mode	Customer ID	Customer Name	Segment	Country	City	State	Postal Code	Region	Product ID	Category	Sub-Category	Product Name	Sales	Quantity	Discount	Profit
+1	CA-2016-152156	11/8/16	11/11/16	Second Class	CG-12520	Claire Gute	Consumer	United States	Henderson	Kentucky	42420	South	FUR-BO-10001798	Furniture	Bookcases	"Bush, Somerset Collection Bookcase?"	261.96	2	0	41.9136
+2	CA-2016-152156	11/8/16	11/11/16	Second Class	CG-12520	Claire Gute	Consumer	United States	Henderson	Kentucky	42420	South	FUR-CH-10000454	Furniture	Chairs	Hon Deluxe Fabric Upholstered Stacking Chairs, Rounded Back	731.94	3	0	219.582
+
+Output: 
+{
+    "Claire Gute": {
+        "orders": [
+            {
+                "order_id": "CA-2016-152156",
+                "order_date": "2016-11-08T00:00:00.000Z",
+                "line_items": [
+                    {
+                        "product_url": "https://www.foo.com/Furniture/Bookcases/FUR-BO-10001798",
+                        "revenue": 261.96
+                    },
+                    {
+                        "product_url": "https://www.foo.com/Furniture/Chairs/FUR-CH-10000454",
+                        "revenue": 731.94
+                    }
+                ]
+            }
+        ]
+    }
+}
